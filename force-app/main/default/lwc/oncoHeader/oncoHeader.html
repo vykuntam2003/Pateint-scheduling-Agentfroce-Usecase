@@ -1,0 +1,67 @@
+<template>
+  <header class="header">
+    <div class="logo">
+      <span class="logo-text">ONCO<span class="highlight">GLOBAL</span><span class="plus">+</span></span>
+    </div>
+    
+    <nav class="nav">
+      <!-- Services Dropdown -->
+      <div class="nav-item has-dropdown" onclick={handleToggleServices}>
+        <div class="nav-link-wrapper">
+          <a href="#" class="nav-link">Services</a>
+          <lightning-icon icon-name="utility:chevrondown" size="xx-small" class="nav-icon"></lightning-icon>
+        </div>
+        
+        <template if:true={isServicesOpen}>
+          <div class="dropdown-menu">
+            <template for:each={services} for:item="service">
+              <div key={service.id} class="dropdown-item">
+                <div class="item-icon">
+                  <lightning-icon icon-name={service.icon} size="small"></lightning-icon>
+                </div>
+                <div class="item-text">
+                  <p class="service-name">{service.name}</p>
+                  <p class="service-desc">{service.desc}</p>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+
+      <!-- Doctors Dropdown -->
+      <div class="nav-item has-dropdown" onclick={handleToggleDoctors}>
+        <div class="nav-link-wrapper">
+          <a href="#" class="nav-link">Doctors</a>
+          <lightning-icon icon-name="utility:chevrondown" size="xx-small" class="nav-icon"></lightning-icon>
+        </div>
+        
+        <template if:true={isDoctorsOpen}>
+          <div class="dropdown-menu">
+            <template for:each={doctorsMenu} for:item="docItem">
+              <div key={docItem.id} class="dropdown-item">
+                <div class="item-icon doc-icon">
+                  <lightning-icon icon-name={docItem.icon} size="small"></lightning-icon>
+                </div>
+                <div class="item-text">
+                  <p class="service-name">{docItem.name}</p>
+                  <p class="service-desc">{docItem.desc}</p>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+      <a href="#" class="nav-link">Schedule</a>
+      <div class="nav-item">
+        <a href="#" class="nav-link">News</a>
+        <span class="badge-hot">Hot</span>
+      </div>
+    </nav>
+    
+    <div class="actions">
+      <a href="#" class="nav-link contact-link">Contact us</a>
+      <lightning-button label="Get Started" variant="brand" class="btn-started"></lightning-button>
+    </div>
+  </header>
+</template>

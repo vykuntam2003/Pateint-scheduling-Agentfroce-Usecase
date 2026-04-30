@@ -1,0 +1,43 @@
+<template>
+    <div class="input-card">
+        <div class="card-header">
+            <span class="card-emoji">👋</span>
+            <div>
+                <h2 class="card-title">Welcome! Let's verify you</h2>
+                <p class="card-subtitle">Enter your registered contact details</p>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <lightning-input 
+                type="tel" 
+                label="Mobile Number" 
+                value={formData.mobileNumber} 
+                data-field="mobileNumber" 
+                onchange={handleInputChange} 
+                placeholder="e.g., +91-90001-20001"
+                class="field-item">
+            </lightning-input>
+        </div>
+
+        <div class="divider">
+            <span class="divider-text">OR</span>
+        </div>
+
+        <div class="field-group">
+            <lightning-input 
+                type="email" 
+                label="Email Address" 
+                value={formData.emailAddress} 
+                data-field="emailAddress" 
+                onchange={handleInputChange} 
+                placeholder="email@example.com">
+            </lightning-input>
+        </div>
+
+        <div class="hint-text">
+            <span class="hint-icon-text">🔒</span>
+            Your information is kept secure and private.
+        </div>
+    </div>
+</template>

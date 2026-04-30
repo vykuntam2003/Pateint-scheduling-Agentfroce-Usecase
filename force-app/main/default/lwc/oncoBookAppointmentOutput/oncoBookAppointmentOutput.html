@@ -1,0 +1,47 @@
+<template>
+    <div class="card">
+        <template if:true={isSuccess}>
+            <div class="hdr">
+                <div class="ico">✅</div>
+                <div class="hdr-txt">
+                    <p class="title">Appointment Confirmed</p>
+                    <p class="num">#{appointmentNumber}</p>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="detail-row">
+                    <span class="lbl">Doctor:</span>
+                    <span class="val">{displayDoctor}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="lbl">Hospital:</span>
+                    <span class="val">{displayHospital}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="lbl">Date/Time:</span>
+                    <span class="val">{displayDateTime}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="lbl">Type:</span>
+                    <span class="val">{displayType}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="lbl">Symptoms:</span>
+                    <span class="val">{displaySymptoms}</span>
+                </div>
+            </div>
+
+            <div class="msg">
+                <p>Please arrive 15 minutes early with your medical records.</p>
+            </div>
+        </template>
+
+        <template if:false={isSuccess}>
+            <div class="err">
+                <p class="err-title">⚠️ Booking Failed</p>
+                <p class="err-msg">{errorMessage}</p>
+            </div>
+        </template>
+    </div>
+</template>

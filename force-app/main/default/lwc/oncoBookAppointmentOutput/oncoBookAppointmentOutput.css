@@ -1,0 +1,22 @@
+.card {
+    background: linear-gradient(135deg, #f0fff4 0%, #e8fff0 100%);
+    border-radius: 10px;
+    padding: 12px;
+    max-width: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 8px; }
+.ico { font-size: 24px; }
+.title { font-weight: 700; font-size: 14px; color: #065f46; margin: 0; }
+.num { font-size: 11px; color: #059669; font-weight: 600; margin: 1px 0 0; font-family: monospace; }
+
+.details { background: white; border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+.detail-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.lbl { font-size: 10px; color: #6b7280; font-weight: 600; text-transform: uppercase; }
+.val { font-size: 11px; color: #111827; font-weight: 700; text-align: right; }
+
+.msg { font-size: 10px; color: #4b5563; text-align: center; font-style: italic; }
+
+.err { background: #fff5f5; border: 1px solid #fecaca; border-radius: 8px; padding: 10px; color: #b91c1c; }
+.err-title { font-weight: 700; font-size: 13px; margin: 0 0 4px; }
+.err-msg { font-size: 11px; margin: 0; }

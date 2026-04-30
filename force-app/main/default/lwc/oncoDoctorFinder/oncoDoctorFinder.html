@@ -1,0 +1,62 @@
+<template>
+  <div class="consultation-card">
+    <div class="card-header">
+      <div class="title-wrap">
+        <lightning-icon icon-name="utility:location" size="small" class="pin-icon"></lightning-icon>
+        <h2 class="main-title">Doctor <span class="highlight">Consultation</span></h2>
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="tabs">
+        <template for:each={categories} for:item="tab">
+          <button 
+            key={tab.name} 
+            class={tab.className} 
+            onclick={handleTabClick} 
+            data-tab={tab.name}>
+            {tab.label}
+          </button>
+        </template>
+      </div>
+      <div class="search-wrap">
+        <lightning-icon icon-name="utility:search" size="xx-small" class="search-icon"></lightning-icon>
+        <input type="text" placeholder="Search for more" oninput={handleSearch} class="search-input" />
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="doctor-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Degree</th>
+            <th>Chamber</th>
+            <th>Availability</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <template for:each={filteredDoctors} for:item="doc">
+            <tr key={doc.id}>
+              <td class="name-cell" data-label="Name">{doc.name}</td>
+              <td class="degree-cell" data-label="Degree">{doc.degree}</td>
+              <td class="chamber-cell" data-label="Chamber">
+                <span class="chamber-label">{doc.chamber}</span>
+                <span class="pulse-dot"></span>
+              </td>
+              <td class="availability-cell" data-label="Availability">
+                <template for:each={doc.availability} for:item="day">
+                  <span key={day} class="day-pill">{day}</span>
+                </template>
+              </td>
+              <td class="action-cell">
+                <button class="btn-details" onclick={handleBook} data-doctor={doc.name}>Book Now</button>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>

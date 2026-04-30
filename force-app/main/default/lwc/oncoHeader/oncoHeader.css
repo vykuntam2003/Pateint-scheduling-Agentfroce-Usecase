@@ -1,0 +1,223 @@
+/* ====== GLASSMORPHISM HEADER ====== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 2px solid rgba(0, 245, 255, 0.2);
+}
+
+.logo-text {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.logo-text .highlight {
+    background: linear-gradient(135deg, #06B6D4, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-text .plus {
+    color: #22D3EE;
+    font-size: 1.25rem;
+    vertical-align: super;
+    margin-left: 2px;
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    position: relative;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #22D3EE !important;
+    text-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+}
+
+.nav-link-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+}
+
+/* ====== DROPDOWN MENUS ====== */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    width: 300px;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(30, 58, 95, 0.97));
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(6, 182, 212, 0.1);
+    z-index: 1000;
+    animation: slideDown 0.3s ease-out;
+    border: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: rgba(34, 211, 238, 0.1);
+    transform: translateX(5px);
+}
+
+.item-icon {
+    background: linear-gradient(135deg, #06B6D4, #3B82F6);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+.item-icon.doc-icon {
+    background: linear-gradient(135deg, #F43F5E, #EC4899);
+    box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+}
+
+.dropdown-item:hover .item-icon.doc-icon {
+    box-shadow: 0 6px 25px rgba(244, 63, 94, 0.5);
+}
+
+.service-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.service-desc {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.nav-icon {
+    --lwc-colorTextIconDefault: #ffffff !important;
+    margin-top: 2px;
+}
+
+.badge-hot {
+    background: linear-gradient(135deg, #EF4444, #F97316);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 4px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 10px rgba(239, 68, 68, 0.4);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.contact-link {
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+.contact-link:hover {
+    color: #22D3EE;
+}
+
+.btn-started {
+    --lwc-buttonBrandColorBackground: #06B6D4;
+    --lwc-buttonBrandColorBorder: #06B6D4;
+    --lwc-borderRadiusMedium: 50px;
+    font-weight: 700;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+}
+
+@media (max-width: 1024px) {
+    .nav {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 1.25rem;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+    
+    .logo {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .logo-text {
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+    
+    .actions {
+        flex: 0 0 auto;
+        gap: 0.5rem;
+    }
+    
+    .contact-link {
+        display: none;
+    }
+    
+    .btn-started {
+        --lwc-borderRadiusMedium: 8px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}

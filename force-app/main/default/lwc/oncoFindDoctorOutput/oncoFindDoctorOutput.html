@@ -1,0 +1,56 @@
+<template>
+    <div class="card">
+        <!-- Header -->
+        <div class="hdr">
+            <span class="hdr-ico">🩺</span>
+            <div>
+                <p class="hdr-title">Available Specialists</p>
+                <template if:true={specialtyName}>
+                    <p class="hdr-sub">{specialtyName}</p>
+                </template>
+            </div>
+        </div>
+
+        <template if:true={isSuccess}>
+            <template if:true={hasDoctors}>
+                <div class="date-lbl">{displayDateLabel}</div>
+                
+                <template for:each={formattedDoctorList} for:item="doc">
+                    <div key={doc.resourceId} class="doc-card" onclick={handleDoctorClick} data-doctor={doc.name}>
+                        <div class="doc-row">
+                            <span class="doc-ava">👨‍⚕️</span>
+                            <div>
+                                <p class="doc-name">{doc.displayName}</p>
+                                <p class="doc-hosp">🏥 {doc.displayHospital}</p>
+                            </div>
+                        </div>
+                        <template if:true={doc.hasSlots}>
+                            <p class="slot-lbl">SELECT A TIME SLOT</p>
+                            <div class="slots">
+                                <template for:each={doc.slotButtons} for:item="slot">
+                                    <button key={slot} class="slot-btn" 
+                                            onclick={handleSlotClick} 
+                                            data-doctor={doc.name} 
+                                            data-resourceid={doc.resourceId}
+                                            data-slot={slot}>
+                                        {slot}
+                                    </button>
+                                </template>
+                            </div>
+                        </template>
+                        <template if:false={doc.hasSlots}>
+                            <p class="no-slot">📅 No slots available for this doctor on this date.</p>
+                        </template>
+                    </div>
+                </template>
+            </template>
+            <template if:false={hasDoctors}>
+                <p class="empty">🔍 No specialists found for the selected city/date.</p>
+            </template>
+        </template>
+
+        <template if:false={isSuccess}>
+            <div class="err">⚠️ {errorMessage}</div>
+        </template>
+    </div>
+</template>

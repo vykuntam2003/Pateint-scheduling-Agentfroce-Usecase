@@ -1,0 +1,38 @@
+<template>
+    <div class="input-card">
+        <div class="card-header">
+            <span class="card-emoji">📅</span>
+            <div>
+                <h2 class="card-title">Confirm Your Appointment</h2>
+                <p class="card-subtitle">Review and finalize your booking details</p>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <lightning-input 
+                label="Appointment Type" 
+                value={formData.appointmentType} 
+                data-field="appointmentType" 
+                onchange={handleInputChange} 
+                placeholder="e.g., General Consultation"
+                class="field-item">
+            </lightning-input>
+        </div>
+
+        <div class="field-group">
+            <lightning-textarea 
+                label="Health Concern" 
+                value={formData.symptomDescription} 
+                data-field="symptomDescription" 
+                onchange={handleInputChange} 
+                placeholder="Briefly describe your health concern..."
+                class="field-item">
+            </lightning-textarea>
+        </div>
+
+        <div class="hint-text">
+            <span class="hint-icon-text">💡</span>
+            Your doctor and time slot have been pre-selected from the previous step.
+        </div>
+    </div>
+</template>

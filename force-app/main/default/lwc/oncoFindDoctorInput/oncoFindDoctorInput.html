@@ -1,0 +1,54 @@
+<template>
+    <div class="input-card">
+        <div class="card-header">
+            <span class="card-emoji">🔍</span>
+            <div>
+                <h2 class="card-title">Find Your Specialist</h2>
+                <p class="card-subtitle">Tell us about your health concern</p>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <lightning-textarea 
+                label="What brings you in today?" 
+                value={formData.symptomDescription} 
+                data-field="symptomDescription"
+                onchange={handleInputChange} 
+                required 
+                placeholder="Describe your symptoms or health concern..."
+                class="field-item">
+            </lightning-textarea>
+        </div>
+
+        <div class="divider">
+            <span class="divider-text">Preferences</span>
+        </div>
+
+        <div class="preferences-row">
+            <div class="pref-field">
+                <lightning-input 
+                    label="Preferred City" 
+                    value={formData.preferredCity} 
+                    data-field="preferredCity" 
+                    onchange={handleInputChange}
+                    placeholder="e.g., Kolkata" 
+                    required>
+                </lightning-input>
+            </div>
+            <div class="pref-field">
+                <lightning-input 
+                    label="Preferred Date" 
+                    type="date" 
+                    value={formData.preferredDate} 
+                    data-field="preferredDate"
+                    onchange={handleInputChange}>
+                </lightning-input>
+            </div>
+        </div>
+
+        <div class="hint-text">
+            <lightning-icon icon-name="utility:info" size="xx-small" class="hint-icon"></lightning-icon>
+            We'll match you with the best available specialist based on your symptoms.
+        </div>
+    </div>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <h2 class="slds-text-heading_small slds-m-bottom_small">📋 Patient Registration</h2>
+        
+        <lightning-input label="First Name" value={formData.firstName} data-field="firstName" onchange={handleInputChange} required></lightning-input>
+        <lightning-input label="Last Name" value={formData.lastName} data-field="lastName" onchange={handleInputChange} required></lightning-input>
+        <lightning-input type="tel" label="Mobile Number" value={formData.mobileNumber} data-field="mobileNumber" onchange={handleInputChange} placeholder="10-digit number" required></lightning-input>
+        <lightning-input type="email" label="Email Address" value={formData.emailAddress} data-field="emailAddress" onchange={handleInputChange} placeholder="email@example.com"></lightning-input>
+        <lightning-input type="date" label="Date of Birth" value={formData.dateOfBirth} data-field="dateOfBirth" onchange={handleInputChange}></lightning-input>
+        
+        <div class="slds-m-top_medium slds-text-color_weak slds-text-body_small">
+            <p>Please enter your details to create your medical profile.</p>
+        </div>
+    </div>
+</template>

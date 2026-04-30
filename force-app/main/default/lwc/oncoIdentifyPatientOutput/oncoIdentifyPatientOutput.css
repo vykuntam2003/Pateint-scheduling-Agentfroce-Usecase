@@ -1,0 +1,12 @@
+.card {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f0ff 100%);
+    border-radius: 8px;
+    padding: 8px 12px;
+    max-width: 280px;
+}
+.row { display: flex; align-items: center; gap: 10px; }
+.ava { font-size: 20px; background: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.info { min-width: 0; }
+.name { font-weight: 700; font-size: 13px; color: #1a1a2e; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.status { font-size: 10px; color: #0176d3; font-weight: 600; margin: 1px 0 0; }
+.err { color: #b91c1c; font-size: 11px; padding: 4px; }

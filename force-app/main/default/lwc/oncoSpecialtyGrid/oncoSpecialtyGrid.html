@@ -1,0 +1,20 @@
+<template>
+  <section class="specialty-section">
+    <div class="header-area">
+      <span class="badge">Our Services</span>
+      <h2 class="section-title">Specialized <span class="highlight">Oncology</span> Care</h2>
+    </div>
+    <div class="grid">
+      <template for:each={specialties} for:item="spec">
+        <article key={spec.id} class="card">
+          <div class="card-inner">
+            <div class={spec.class}>{spec.icon}</div>
+            <h3 class="card-title">{spec.title}</h3>
+            <p class="card-desc">{spec.description}</p>
+            <a href="#" class="learn-more">Learn more →</a>
+          </div>
+        </article>
+      </template>
+    </div>
+  </section>
+</template>

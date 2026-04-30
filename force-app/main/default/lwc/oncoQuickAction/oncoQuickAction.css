@@ -1,0 +1,118 @@
+/* ====== VIBRANT QUICK ACTION SECTION ====== */
+.quick-action-container {
+    display: flex;
+    background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 50%, #10B981 100%);
+    color: white;
+    width: 100%;
+    margin-top: -30px;
+    position: relative;
+    z-index: 5;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
+}
+
+.form-section {
+    flex: 2;
+    padding: 2.5rem 4rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-item label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.input-item input {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 0.75rem 1.25rem;
+    color: white;
+    outline: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.input-item input:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.input-item input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.info-section {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.opening-hours {
+    width: 100%;
+}
+
+.opening-hours .header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.opening-hours h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dots {
+    flex-grow: 1;
+    margin: 0 1rem;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    height: 10px;
+}
+
+.clock-icon {
+    --lwc-colorTextIconInverse: white;
+}
+
+@media (max-width: 1024px) {
+    .quick-action-container {
+        flex-direction: column;
+        margin-top: 0;
+    }
+    .form-section {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 2.5rem 1.5rem;
+    }
+    .info-section {
+        padding: 2.5rem 1.5rem;
+    }
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+}

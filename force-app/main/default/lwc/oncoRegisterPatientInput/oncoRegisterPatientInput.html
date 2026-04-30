@@ -1,0 +1,73 @@
+<template>
+    <div class="input-card">
+        <div class="card-header">
+            <span class="card-emoji">📋</span>
+            <div>
+                <h2 class="card-title">Create Your Profile</h2>
+                <p class="card-subtitle">We just need a few details to get you started</p>
+            </div>
+        </div>
+
+        <div class="name-row">
+            <div class="name-field">
+                <lightning-input 
+                    label="First Name" 
+                    value={formData.firstName} 
+                    data-field="firstName" 
+                    onchange={handleInputChange} 
+                    required>
+                </lightning-input>
+            </div>
+            <div class="name-field">
+                <lightning-input 
+                    label="Last Name" 
+                    value={formData.lastName} 
+                    data-field="lastName" 
+                    onchange={handleInputChange} 
+                    required>
+                </lightning-input>
+            </div>
+        </div>
+
+        <div class="divider">
+            <span class="divider-text">Contact Details</span>
+        </div>
+
+        <div class="field-group">
+            <lightning-input 
+                type="tel" 
+                label="Mobile Number" 
+                value={formData.mobileNumber} 
+                data-field="mobileNumber" 
+                onchange={handleInputChange} 
+                placeholder="e.g., +91-90001-20001">
+            </lightning-input>
+        </div>
+
+        <div class="field-group">
+            <lightning-input 
+                type="email" 
+                label="Email Address" 
+                value={formData.emailAddress} 
+                data-field="emailAddress" 
+                onchange={handleInputChange} 
+                placeholder="email@example.com">
+            </lightning-input>
+        </div>
+
+        <div class="field-group">
+            <lightning-input 
+                type="date" 
+                label="Date of Birth" 
+                value={formData.dateOfBirth} 
+                data-field="dateOfBirth" 
+                onchange={handleInputChange}>
+            </lightning-input>
+        </div>
+
+        <div class="hint-text">
+            <span class="hint-icon-text">🔒</span>
+            Your medical profile is private and HIPAA compliant.
+        </div>
+    </div>
+</template>

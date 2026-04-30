@@ -1,0 +1,88 @@
+# -----------------------------
+# Salesforce DX / Agentforce
+# Perfect .gitignore
+# -----------------------------
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Salesforce local folders
+.sfdx/
+.sf/
+.localdevserver/
+scannerwork/
+coverage/
+tmp/
+temp/
+
+# VS Code local settings
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Package lock optional
+package-lock.json
+
+# Test outputs
+test-result.xml
+junit.xml
+
+# Salesforce Auth files
+*.key
+*.crt
+
+# Metadata backups
+*.bak
+*.old
+
+# -----------------------------
+# Ignore Generated Static Resources
+# Experience Cloud / Embedded Messaging
+# -----------------------------
+force-app/main/default/staticresources/SNA_*/
+
+# Optional ignore all staticresources zip/generated
+# force-app/main/default/staticresources/*
+
+# -----------------------------
+# Ignore retrieved source temp
+# -----------------------------
+manifest/package.xml
+
+# -----------------------------
+# Ignore local environment files
+# -----------------------------
+.env
+.env.*
+
+# -----------------------------
+# Ignore Apex logs exports
+# -----------------------------
+*.csv
+*.txt
+
+# -----------------------------
+# Keep Important Source Code
+# (These remain tracked)
+# -----------------------------
+!force-app/main/default/classes/
+!force-app/main/default/lwc/
+!force-app/main/default/aura/
+!force-app/main/default/flows/
+!force-app/main/default/objects/
+!force-app/main/default/triggers/
+!force-app/main/default/flexipages/
+!force-app/main/default/permissionsets/
+!force-app/main/default/profiles/

@@ -1,0 +1,26 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <template if:true={isSuccess}>
+            <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_medium">
+                <lightning-icon icon-name="utility:event" variant="success" size="small" class="slds-m-right_small"></lightning-icon>
+                <h2 class="slds-text-heading_small slds-text-color_success">Action Completed Successfully</h2>
+            </div>
+            
+            <div class="slds-box slds-theme_shade">
+                <p class="slds-text-longform" style="white-space: pre-wrap; font-size: 14px; line-height: 1.5;">
+                    <lightning-formatted-rich-text value={resultMessage}></lightning-formatted-rich-text>
+                </p>
+            </div>
+        </template>
+
+        <template if:false={isSuccess}>
+            <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_medium">
+                <lightning-icon icon-name="utility:error" variant="error" size="small" class="slds-m-right_small"></lightning-icon>
+                <h2 class="slds-text-heading_small slds-text-color_error">Update Failed</h2>
+            </div>
+            <div class="slds-box slds-theme_error slds-theme_alert-texture">
+                <p>{errorMessage}</p>
+            </div>
+        </template>
+    </div>
+</template>

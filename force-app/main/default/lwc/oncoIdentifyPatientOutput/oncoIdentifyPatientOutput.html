@@ -1,0 +1,19 @@
+<template>
+    <div class="card">
+        <template if:true={isSuccess}>
+            <div class="row">
+                <div class="ava">👤</div>
+                <div class="info">
+                    <p class="name">{patientName}</p>
+                    <p class="status">
+                        <template if:true={isFound}>✅ Verified Patient</template>
+                        <template if:false={isFound}>✨ Profile Created</template>
+                    </p>
+                </div>
+            </div>
+        </template>
+        <template if:false={isSuccess}>
+            <div class="err">⚠️ {message}</div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_medium">
+            <lightning-icon icon-name="standard:service_appointment" size="small" class="slds-m-right_small"></lightning-icon>
+            <h2 class="slds-text-heading_small">Your Appointments ({appointmentCount})</h2>
+        </div>
+
+        <template if:true={isSuccess}>
+            <template if:true={hasAppointments}>
+                <div class="slds-text-longform" style="white-space: pre-wrap; font-size: 14px; line-height: 1.6;">
+                    <lightning-formatted-rich-text value={appointmentSummary}></lightning-formatted-rich-text>
+                </div>
+            </template>
+            <template if:false={hasAppointments}>
+                <div class="slds-box slds-theme_shade slds-text-align_center">
+                    <p class="slds-text-color_weak">No matching appointments found.</p>
+                </div>
+            </template>
+        </template>
+
+        <template if:false={isSuccess}>
+            <div class="slds-box slds-theme_error slds-theme_alert-texture">
+                <p>{errorMessage}</p>
+            </div>
+        </template>
+    </div>
+</template>
