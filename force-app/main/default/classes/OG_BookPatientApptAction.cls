@@ -160,7 +160,7 @@ public without sharing class OG_BookPatientApptAction {
                 appt.WorkTypeId = wt.workTypeId;
             }
             
-            // Resolve and set Doctor's Contact ID
+            // Resolve and set Doctor's Contact ID (requested to be visible in Contact field)
             Id docContactId = resolveDoctorContact(inp.doctorResourceId);
             if (docContactId != null) {
                 appt.ContactId = docContactId;

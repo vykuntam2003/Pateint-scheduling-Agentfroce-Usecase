@@ -2,6 +2,7 @@ import { LightningElement, api, track } from 'lwc';
 
 export default class OncoFindDoctorOutput extends LightningElement {
     @api value;
+    @api configuration; // Injected by Agentforce/Messaging runtime
     @track selectedDate = '';
 
     connectedCallback() {
@@ -9,11 +10,7 @@ export default class OncoFindDoctorOutput extends LightningElement {
     }
 
     initializeDate() {
-        // Use the date the agent actually searched for
         if (this.value && this.value.searchDate) {
-            // Convert MM/DD/YYYY to YYYY-MM-DD if needed, or use as is
-            // Typically searchDate from Apex is string. We need it to match the keys in slotsJson.
-            // Let's assume it's already in the correct format or we can try to normalize it.
             this.selectedDate = this.value.searchDate;
         } else {
             this.selectedDate = new Date().toISOString().split('T')[0];
@@ -58,7 +55,6 @@ export default class OncoFindDoctorOutput extends LightningElement {
                 slotsMap = doc.slotsJson ? JSON.parse(doc.slotsJson) : {};
             } catch (e) { console.error('JSON Parse error', e); }
 
-            // Try to find slots for the selected date
             let daySlots = slotsMap[this.selectedDate] || [];
 
             return {
@@ -84,10 +80,14 @@ export default class OncoFindDoctorOutput extends LightningElement {
     }
 
     handleDoctorClick(event) {
+        // Prevent clicking the slot buttons from triggering the card click
         if (event.target.closest('.slot-btn')) return;
+        
         const doctorName = event.currentTarget.dataset.doctor;
         const cleanDoctor = this.cleanName(doctorName);
-        this.submitMessage(`Book with ${cleanDoctor}`);
+        
+        const utterance = `I want to book with ${cleanDoctor}`;
+        this.submitMessage(utterance);
     }
 
     handleSlotClick(event) {
@@ -103,7 +103,6 @@ export default class OncoFindDoctorOutput extends LightningElement {
         event.target.classList.add('selected');
 
         const cleanDoctor = this.cleanName(doctorName);
-        // Include the date to ensure the Agent books for the correct day
         const chatMessage = `I want to book ${cleanDoctor} at ${selectedSlot} for ${this.selectedDate}`;
         
         this.submitMessage(chatMessage);
@@ -124,8 +123,21 @@ export default class OncoFindDoctorOutput extends LightningElement {
     }
 
     submitMessage(text) {
-        console.log('Dispatching events for:', text);
+        console.log('Attempting to send message:', text);
         
+        // 1. Primary approach: Messaging for Web / Agentforce Utility
+        if (this.configuration && this.configuration.util) {
+            const util = this.configuration.util;
+            const sendFn = util.sendTextMessage || util.sendMessage;
+            if (sendFn) {
+                sendFn.call(util, text)
+                    .then(() => console.log('Message sent via util:', text))
+                    .catch(err => console.error('Util send failed:', err));
+                return; // Success
+            }
+        }
+
+        // 2. Fallback: Custom Events for Einstein Copilot / Messaging
         const eventNames = [
             'sendmessage', 
             'sendMessage', 

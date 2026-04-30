@@ -16,7 +16,7 @@
                 <div class="date-lbl">{displayDateLabel}</div>
                 
                 <template for:each={formattedDoctorList} for:item="doc">
-                    <div key={doc.resourceId} class="doc-card" onclick={handleDoctorClick} data-doctor={doc.name}>
+                    <div key={doc.resourceId} class="doc-card" onclick={handleDoctorClick} data-doctor={doc.name} role="button" tabindex="0">
                         <div class="doc-row">
                             <span class="doc-ava">👨‍⚕️</span>
                             <div>

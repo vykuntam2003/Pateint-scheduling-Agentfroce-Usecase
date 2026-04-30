@@ -39,19 +39,22 @@ public without sharing class OG_EmailService {
             List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
             // 1. Prepare Patient Email
+            if (String.isNotBlank(patientEmail)) {
             emails.add(buildPatientEmail(sa, patientAcc, type, oweId));
+            }
 
             // 2. Prepare Doctor Email
             if (!sa.ServiceResources.isEmpty() && sa.ServiceResources[0].ServiceResource.RelatedRecord != null) {
                 String docEmail = sa.ServiceResources[0].ServiceResource.RelatedRecord.Email;
                 if (String.isNotBlank(docEmail)) {
-                    emails.add(buildDoctorEmail(sa, type, oweId));
+                    emails.add(buildDoctorEmail(sa, type, oweId, patientName));
                 }
             }
 
             if (!emails.isEmpty()) {
-                Messaging.sendEmail(emails);
-                System.debug('✅ Emails sent for Appointment: ' + sa.AppointmentNumber);
+                // allOrNone = false ensures that if one email fails, the others are still sent
+                Messaging.sendEmail(emails, false);
+                System.debug('✅ Email process completed for Appointment: ' + sa.AppointmentNumber);
             }
 
         } catch (Exception e) {
@@ -114,7 +117,7 @@ public without sharing class OG_EmailService {
         return mail;
     }
 
-    private static Messaging.SingleEmailMessage buildDoctorEmail(ServiceAppointment sa, EmailType type, Id oweId) {
+    private static Messaging.SingleEmailMessage buildDoctorEmail(ServiceAppointment sa, EmailType type, Id oweId, String patientName) {
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         
         String docEmail = sa.ServiceResources[0].ServiceResource.RelatedRecord.Email;
@@ -125,7 +128,6 @@ public without sharing class OG_EmailService {
             mail.setSenderDisplayName(FROM_NAME);
         }
 
-        String patientName = sa.Contact?.Name != null ? sa.Contact.Name : 'a Patient';
         String dtStr = sa.SchedStartTime.format('h:mm a, d MMM yyyy');
         
         String subject = '';
